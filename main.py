@@ -126,7 +126,7 @@ NUM_GENS = 12
 BATCH_SIZE = 12
 
 train_cfg = GRPOConfig(
-    output_dir="llama3_ipj_grpo",
+    output_dir="ipj_grpo",
     per_device_train_batch_size=BATCH_SIZE,
     gradient_accumulation_steps=1,
     num_train_epochs=1,
@@ -139,29 +139,35 @@ train_cfg = GRPOConfig(
     save_strategy="steps",
     save_steps=400,
     save_total_limit=2,
+
     # If you want to do a holdout eval
     # do_eval=False,
     # eval_strategy="steps",
     # eval_steps=200,
+
     # —— sequence lengths ——
     max_prompt_length=512,
     max_completion_length=512,
+
     # —— GRPO specifics ——
     num_generations=NUM_GENS,
     disable_dropout=True,
     sync_ref_model=True,
     ref_model_sync_steps=32,
     ref_model_mixup_alpha=0.8,
+
     # precision / optimiser
     bf16=(DTYPE is torch.bfloat16),
     fp16=(DTYPE is torch.float16),
     tf32=True,
     optim="adamw_8bit",
     # gradient_checkpointing = True,
+
     # —— vLLM settings ——
     use_vllm=False,
     vllm_mode="colocate",
     vllm_gpu_memory_utilization=0.50,
+
     #
     cache_implementation="static",
     mask_truncated_completions=True,
