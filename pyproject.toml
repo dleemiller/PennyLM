@@ -7,7 +7,10 @@ requires-python = ">=3.12"
 dependencies = [
     "datasets>=3.6.0",
     "dspy>=2.6.27",
+    "evaluate>=0.4.3",
     "jupyter>=1.1.1",
+    "numpy>=2.2.6",
+    "pandas>=2.2.3",
     "textdistance>=4.6.3",
     "transformers>=4.52.4",
     "trl>=0.18.1",
